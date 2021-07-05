@@ -52,7 +52,7 @@ CREATE TABLE GroupAccount(
 DROP TABLE IF EXISTS TypeQuestion;
 CREATE TABLE TypeQuestion (
     TypeID 			TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    TypeName 		ENUM('Esay','Multiple-Choice') NOT NULL UNIQUE KEY
+    TypeName 		VARCHAR(40)
 );
 
 -- create table 7: CategoryQuestion
