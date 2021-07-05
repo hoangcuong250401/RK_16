@@ -1,0 +1,84 @@
+DROP DATABASE IF EXISTS `Testing_System_Assignment_1`;
+
+CREATE DATABASE `Testing_System_Assignment_1`;
+USE `Testing_System_Assignment_1`;
+DROP TABLE IF EXISTS `Department`;
+CREATE TABLE `Department`(
+	Department_ID 	TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Department_Name VARCHAR(50)
+);
+DROP TABLE IF EXISTS Position;
+CREATE TABLE Position (
+	Position_ID 	SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Position_Name	VARCHAR(50)
+);
+DROP TABLE IF EXISTS `Account`;
+CREATE TABLE `Account`(
+	Account_ID 		SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Email			VARCHAR(30) UNIQUE KEY,
+    Username		CHAR(15) UNIQUE KEY,
+    FullName		NVARCHAR(50),
+    Department_ID	TINYINT UNSIGNED,
+    Position_ID		SMALLINT UNSIGNED,
+    Create_Date		DATETIME
+);
+DROP TABLE IF EXISTS `Group`;
+CREATE TABLE `Group` (
+	Group_ID		INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Group_Name		VARCHAR(30),
+    Creator_ID		SMALLINT,
+    Create_Date		DATETIME
+);
+DROP TABLE IF EXISTS `GroupAccount`;
+CREATE TABLE `GroupAccount`(
+	Group_ID		INT,
+    Account_ID		SMALLINT,
+    Join_Date		DATE
+);
+DROP TABLE IF EXISTS Type_Question;
+CREATE TABLE Type_Question (
+	Type_ID			SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Type_Name		VARCHAR(20)
+);
+DROP TABLE IF EXISTS Category_Question;
+CREATE TABLE Category_Question(
+	Category_ID		TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Category_Name	CHAR(20)
+);
+DROP TABLE IF EXISTS Question;
+CREATE TABLE Question(
+	Question_ID		TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Content			VARCHAR(100),
+    Category_ID		SMALLINT,
+    Type_ID			SMALLINT,
+    Creator_ID		SMALLINT,
+    Create_Date		DATETIME
+);
+DROP TABLE IF EXISTS Answer;
+CREATE TABLE Answer(
+	Answer_ID		SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Content			VARCHAR(100),
+    Question_ID		TINYINT,
+	IsCorrect		BOOLEAN
+);
+    
+CREATE TABLE Exam(
+	Exam_ID			SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    `Code`			TINYINT,
+    Title			NVARCHAR(50),
+    Caregory_ID		TINYINT UNSIGNED,
+    Duration		TIME,
+    Creator_ID		SMALLINT UNSIGNED,
+    Create_Date		DATETIME
+);
+CREATE TABLE Exam_Question(
+	Exam_ID			SMALLINT UNSIGNED,
+    Question_ID		TINYINT UNSIGNED
+);
+	
+
+    
+    
+
+    
+    
